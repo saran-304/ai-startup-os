@@ -13,6 +13,6 @@
     "resolveJsonModule": true,
     "strict": true
   },
-  "include": ["src"],
+  "include": ["index.ts"],
   "exclude": ["node_modules"]
 }
