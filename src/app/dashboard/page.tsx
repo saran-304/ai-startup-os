@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/components/providers/auth-provider';
 import {
   Brain,
+  Search,
+  Lightbulb,
   TrendingUp,
   Target,
   Clock,
