@@ -1,0 +1,50 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // User avatars
+    match /users/{userId}/avatars/{allPaths=**} {
+      allow read: if true;
+      allow write: if isOwner(userId);
+    }
+    
+    // Startup documents
+    match /startups/{startupId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+    
+    // Document uploads
+    match /documents/{userId}/{allPaths=**} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+    }
+    
+    // Pitch decks
+    match /pitch-decks/{userId}/{allPaths=**} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+    }
+    
+    // Course thumbnails (public read)
+    match /courses/{courseId}/thumbnail.png {
+      allow read: if true;
+      allow write: if false; // Only server can write
+    }
+    
+    // Course videos
+    match /courses/{courseId}/video.mp4 {
+      allow read: if true;
+      allow write: if false; // Only server can write
+    }
+  }
+}
