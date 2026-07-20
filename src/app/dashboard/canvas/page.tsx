@@ -93,7 +93,10 @@ export default function BusinessCanvasPage() {
     if (!canvas) return;
     setCanvas({
       ...canvas,
-      [field]: canvas[field].filter((_, i) => i !== index),
+      [field]: Array.isArray(canvas[field])
+            ? canvas[field] as
+       string[]).filter((_, i) => i !== index)
+            : [],
     });
   };
 
