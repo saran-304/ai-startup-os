@@ -77,7 +77,7 @@ export default function BusinessCanvasPage() {
     if (!canvas) return;
     setCanvas({
       ...canvas,
-      [field]: Array.isArray(canvas[field])?canvas[field].map((item, i) => (i === index ? value : item):canvas[field],
+      [field]: Array.isArray(canvas[field])?canvas[field].map((item, i) => (i === index ? value : item)):canvas[field],
     });
   };
 
