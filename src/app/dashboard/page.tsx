@@ -244,7 +244,7 @@ export default function DashboardPage() {
         </Card>
 
         {/* Quick Actions */}
-        <Card></Card>
+        <Card>
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
             <CardDescription>Common tasks</CardDescription>
